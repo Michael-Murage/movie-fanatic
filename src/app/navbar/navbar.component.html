@@ -1,0 +1,85 @@
+<div *ngIf="isNotLogin()">
+    <div id="top-bar" class="w-full">
+        <div class="info-box" style="height: 80%">
+            <img src="/assets/person.svg" alt="person icon" class="border">
+            <img src="/assets/downArrow.svg" alt="down arrow icon" class="border">
+        </div>
+    </div>
+
+    <div *ngIf="fullNav" id="side-bar" class="h-full bg-white flex flex-col">
+        <div class="relative">
+            <app-logo></app-logo>
+            <div class="absolute menu-icon">
+                <div class="flex">
+                    <img src="/assets/menu.svg" alt="menu icon" class="my-auto" (click)="switchNav()">
+                    <h1 class="my-auto mx-4 text-xl">
+                        {{headerReading}}
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3">
+        <div (mouseleave)="navFalse()">
+            <a routerLink="/latest">
+                <div class="flex pl-3 py-2 hover:bg-blue-300 rounded-lg">
+                    <img src="/assets/movie.svg" alt="movie logo">
+                    <p class="text-sm ml-2 my-auto">
+                        Latest Movies
+                    </p>
+                </div>
+            </a>
+            <a routerLink="/search">
+                <div class="flex pl-3 py-2 hover:bg-blue-300 rounded-lg">
+                    <img src="/assets/filter.svg" alt="filter logo">
+                    <p class="text-sm ml-2 my-auto">
+                        Search Movie
+                    </p>
+                </div>
+            </a>
+            <a routerLink="/suggest">
+                <div class="flex pl-3 py-2 hover:bg-blue-300 rounded-lg">
+                    <img src="/assets/more.svg" alt="more logo">
+                    <p class="text-sm ml-2 my-auto">
+                        Suggest/Recommend
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div *ngIf="!fullNav" id="side-bar" class="h-full bg-white flex flex-col px-4">
+        <div class="relative logo-height">
+            
+            <div class="absolute icon-only">
+                <div class="flex">
+                    <img src="/assets/menu.svg" alt="menu icon" class="my-auto" (click)="switchNav()">
+                    <h1 class="my-auto mx-6 text-xl">
+                        {{headerReading}}
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3">
+        <div (mouseover)="navTrue()">
+            <a routerLink="/latest">
+                <div class="flex py-2 hover:bg-blue-300 rounded-lg">
+                    <img src="/assets/movie.svg" alt="movie logo">
+                    
+                </div>
+            </a>
+            <a routerLink="/search">
+                <div class="flex py-2 hover:bg-blue-300 rounded-lg">
+                    <img src="/assets/filter.svg" alt="filter logo">
+                    
+                </div>
+            </a>
+            <a routerLink="/suggest">
+                <div class="flex py-2 hover:bg-blue-300 rounded-lg">
+                    <img src="/assets/more.svg" alt="more logo">
+                    
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>

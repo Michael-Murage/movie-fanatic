@@ -1,0 +1,27 @@
+.login-div{
+    max-width: 400px;
+    width: 94%;
+    padding: 20px;
+    margin: 15% auto;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05);
+}
+.text-bold{
+    font-weight: 700;
+}
+.movie-poster{
+    display: block;
+    width: 50%;
+}
+.login-parent{
+    width: 50%;
+    height: 100vh;
+}
+@media (max-width: 992px) {
+    .movie-poster {
+        display: none;
+        width: 0;
+    }
+    .login-parent {
+        width: 100%;
+    }
+}

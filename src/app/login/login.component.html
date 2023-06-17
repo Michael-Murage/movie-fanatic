@@ -1,0 +1,60 @@
+<div class="flex flex-row justify-between">
+    <div class="w-full overflow-y-scroll login-parent">
+        <div class="login-div border my-auto">
+            <div class="">
+                <app-logo></app-logo>
+                <h1 class="text-bold text-center text-2xl mt-4">
+                    Welcome back
+                    <span class="text-blue-400">!!!</span>
+                </h1>
+            </div>
+            <hr style="height: 2px;" class="mx-2 mt-4">
+
+            <div class="mt-6">
+                <div class="my-6">
+                    <label for="phoneNumber" style="font-weight: 600;">
+                        <span class="text-red-400">*</span>
+                        Phone Number
+                    </label>
+                    <div class="flex justify-between my-2">
+                        <input type="number" 
+                            class="border rounded-md focus:outline-blue-200 p-1" 
+                            style="width: 30%;" 
+                            placeholder="+254"
+                        >
+                        <input type="number" 
+                            class="border rounded-md focus:outline-blue-200 p-1" 
+                            style="width: 60%;" 
+                            placeholder="712345678"
+                        >
+                    </div>
+                </div>
+
+                <div class="my-6">
+                    <label for="password" class="text-bold">
+                        <span class="text-red-400 font-bold">*</span>
+                        Password
+                    </label>
+                    <div class="my-2">
+                        <input 
+                            type="password" name="password" id="" placeholder="Your password"
+                            class="border rounded-md focus:outline-blue-200 w-full border-gray-300 p-2"
+                        >
+                    </div>
+                </div>
+
+                <div class="my-8">
+                    <button 
+                        type="submit" 
+                        class="bg-blue-700 hover:bg-blue-900 text-gray-100 w-full rounded-md p-3"
+                    >
+                        Sign In
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="overflow-y-scroll movie-poster">
+        <img src="/assets/sherlock.jpg" class="w-full h-full" alt="">
+    </div>
+</div>
