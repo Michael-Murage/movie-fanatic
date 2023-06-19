@@ -4,21 +4,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LogoComponent } from './logo/logo.component';
+import { LatestMovieComponent } from './latest-movie/latest-movie.component';
+import { SearchMovieComponent } from './search-movie/search-movie.component';
+import { SuggestMovieComponent } from './suggest-movie/suggest-movie.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
     NavbarComponent,
-    LogoComponent
+    LogoComponent,
+    LatestMovieComponent,
+    SearchMovieComponent,
+    SuggestMovieComponent,
+    MovieCardComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

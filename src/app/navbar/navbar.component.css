@@ -2,27 +2,31 @@
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 110;
+    font-family: 'Montserrat', helvetica, arial, sans-serif;
 }
 #side-bar img {
     width: 1.3em;
     height: 1.3em;
-}
-.nav-link {
-    margin-top: 1em;
-    margin-bottom: 1em;
 }
 #top-bar {
     position: fixed;
     top: 0;
     height: 4em;
     background-color: white;
+    display: flex;
+    z-index: 100;
 }
 .menu-icon {
     top: 1.3em;
-    right: -90%;
+    left: 100%;
+    width: 20em;
+    z-index: 100;
 }
 .icon-only {
     top: 1.1em;
+    width: 20em;
+    z-index: 100;
 }
 .logo-height {
     height: 80px;
@@ -30,8 +34,18 @@
 .info-box {
     display: flex;
     justify-content: flex-end;
+    height: 60%;
+    z-index: 140;
 }
 #top-bar img {
     width: 1.5em;
     height: 1.5em;
+}
+.info-dropdown {
+    top: 105%;
+    right: 5%;
+    font-family: 'Montserrat', helvetica, arial, sans-serif;
+}
+.info-dropdown li {
+    list-style: none;
 }

@@ -1,0 +1,35 @@
+<div *ngIf="!data || data.length === 0" class="" style="height: 80vh; width: 80vw;">
+    <app-loader></app-loader>
+</div>
+
+<div class="movie_card" id="bright" *ngFor="let movie of (data ? data : [])">
+  <div class="info_section">
+    <div class="movie_header">
+      <img class="locandina" [src]="movie.primaryImage ? movie.primaryImage.url : '/assets/sherlock.jpg'"/>
+      <h1>{{movie.originalTitleText.text}}</h1>
+      <h4>{{movie.releaseYear.year}}, {{movie.titleType.text}}</h4>
+    </div>
+    <div class="movie_desc">
+      <p class="text" *ngIf="movie.titleType.isSeries === false">
+        The 
+        <span class="text-bold"> {{movie.originalTitleText.text}} </span>
+        movie will be released on {{movie.releaseDate.day}} - {{movie.releaseDate.month}} - {{movie.releaseDate.year}}.
+      </p>
+
+      <p class="text" *ngIf="movie.titleType.isSeries === true">
+        The 
+        <span class="text-bold"> {{movie.originalTitleText.text}} </span>
+        series starts on {{movie.releaseYear.year}} and runs till {{movie.releaseYear.endYear}}
+      </p>
+    </div>
+    <!-- <div class="movie_social">
+      <ul>
+        <li><i class="material-icons">share</i></li>
+        <li><i class="material-icons"></i></li>
+        <li><i class="material-icons">chat_bubble</i></li>
+      </ul>
+    </div> -->
+  </div>
+  <div class="blur_back" [style.background]="'url(' + (movie.primaryImage ? movie.primaryImage.url : '/assets/sherlock.jpg') + ')'"></div>
+   
+</div>

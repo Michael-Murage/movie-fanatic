@@ -1,45 +1,54 @@
 <div *ngIf="isNotLogin()">
     <div id="top-bar" class="w-full">
-        <div class="info-box" style="height: 80%">
-            <img src="/assets/person.svg" alt="person icon" class="border">
-            <img src="/assets/downArrow.svg" alt="down arrow icon" class="border">
+        <div class=""></div>
+        <div tabindex="1" class="info-box border border-blue-300 ml-auto my-auto mr-3 rounded-md focus:bg-blue-300 focus:scale-95 cursor-pointer relative" (click)="dropDown()" (blur)="showDropdown = false">
+            <div class="w-fit-content rounded-full bg-blue-100 h-fit-content mx-2 my-auto">
+                <img src="/assets/person.svg" alt="person icon" class="">
+            </div>
+            
+            <img src="/assets/downArrow.svg" alt="down arrow icon" class="mx-2 my-auto">
+
+            <div *ngIf="showDropdown" class="absolute info-dropdown bg-white border border-gray-300 rounded" (mouseover)="showDropdown = true">
+                <li class="border-b px-3 py-2 hover:bg-blue-300">example@gmail.com</li>
+                <li class="border-t px-3 py-2 hover:bg-blue-300">Logout</li>
+            </div>
         </div>
     </div>
 
-    <div *ngIf="fullNav" id="side-bar" class="h-full bg-white flex flex-col">
-        <div class="relative">
+    <div *ngIf="fullNav" id="side-bar" class="h-full bg-white flex flex-col" (mouseleave)="navFalse()">
+        <div class="">
             <app-logo></app-logo>
             <div class="absolute menu-icon">
-                <div class="flex">
+                <div class="flex pl-2">
                     <img src="/assets/menu.svg" alt="menu icon" class="my-auto" (click)="switchNav()">
-                    <h1 class="my-auto mx-4 text-xl">
-                        {{headerReading}}
+                    <h1 class="my-auto px-4 text-xl" [ngClass]="fullNav ? 'hidden' : ''">
+                        {{currentHeader()}}
                     </h1>
                 </div>
             </div>
         </div>
         <hr class="my-3">
-        <div (mouseleave)="navFalse()">
+        <div (blur)="navFalse()">
             <a routerLink="/latest">
-                <div class="flex pl-3 py-2 hover:bg-blue-300 rounded-lg">
+                <div class="flex pl-3 py-2 hover:bg-blue-300 rounded-lg" [ngClass]="currentLocation() === '/latest' ? 'bg-blue-300' : ''">
                     <img src="/assets/movie.svg" alt="movie logo">
-                    <p class="text-sm ml-2 my-auto">
+                    <p class="text-sm mx-2 my-auto">
                         Latest Movies
                     </p>
                 </div>
             </a>
             <a routerLink="/search">
-                <div class="flex pl-3 py-2 hover:bg-blue-300 rounded-lg">
+                <div class="flex pl-3 py-2 hover:bg-blue-300 rounded-lg" [ngClass]="currentLocation() === '/search' ? 'bg-blue-300' : ''">
                     <img src="/assets/filter.svg" alt="filter logo">
-                    <p class="text-sm ml-2 my-auto">
+                    <p class="text-sm mx-2 my-auto">
                         Search Movie
                     </p>
                 </div>
             </a>
             <a routerLink="/suggest">
-                <div class="flex pl-3 py-2 hover:bg-blue-300 rounded-lg">
+                <div class="flex pl-3 py-2 hover:bg-blue-300 rounded-lg" [ngClass]="currentLocation() === '/suggest' ? 'bg-blue-300' : ''">
                     <img src="/assets/more.svg" alt="more logo">
-                    <p class="text-sm ml-2 my-auto">
+                    <p class="text-sm mx-2 my-auto">
                         Suggest/Recommend
                     </p>
                 </div>
@@ -47,14 +56,14 @@
         </div>
     </div>
 
-    <div *ngIf="!fullNav" id="side-bar" class="h-full bg-white flex flex-col px-4">
+    <div *ngIf="!fullNav" id="side-bar" class="h-full bg-white flex flex-col px-2">
         <div class="relative logo-height">
             
             <div class="absolute icon-only">
                 <div class="flex">
-                    <img src="/assets/menu.svg" alt="menu icon" class="my-auto" (click)="switchNav()">
+                    <img src="/assets/menu.svg" alt="menu icon" class="my-auto ml-2" (click)="switchNav()">
                     <h1 class="my-auto mx-6 text-xl">
-                        {{headerReading}}
+                        {{currentHeader()}}
                     </h1>
                 </div>
             </div>
@@ -62,19 +71,19 @@
         <hr class="my-3">
         <div (mouseover)="navTrue()">
             <a routerLink="/latest">
-                <div class="flex py-2 hover:bg-blue-300 rounded-lg">
+                <div class="flex py-2 px-2 hover:bg-blue-300 rounded-lg" [ngClass]="currentLocation() === '/latest' ? 'bg-blue-300' : ''">
                     <img src="/assets/movie.svg" alt="movie logo">
                     
                 </div>
             </a>
             <a routerLink="/search">
-                <div class="flex py-2 hover:bg-blue-300 rounded-lg">
+                <div class="flex py-2 px-2 hover:bg-blue-300 rounded-lg" [ngClass]="currentLocation() === '/search' ? 'bg-blue-300' : ''">
                     <img src="/assets/filter.svg" alt="filter logo">
                     
                 </div>
             </a>
             <a routerLink="/suggest">
-                <div class="flex py-2 hover:bg-blue-300 rounded-lg">
+                <div class="flex py-2 px-2 hover:bg-blue-300 rounded-lg" [ngClass]="currentLocation() === '/suggest' ? 'bg-blue-300' : ''">
                     <img src="/assets/more.svg" alt="more logo">
                     
                 </div>

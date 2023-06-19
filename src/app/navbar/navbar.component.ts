@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
     fullNav: boolean = false;
-    headerReading: string = '';
+    showDropdown: boolean = false;
 
     constructor(
         private location: Location
@@ -34,18 +34,24 @@ export class NavbarComponent implements OnInit {
         this.fullNav = false;
     }
 
-    currentHeader(): void {
-        if (this.location.path() === '/dashboard') {
-            this.headerReading = 'Dashboard';
-        } else if (this.location.path() === '/latest') {
-            this.headerReading = 'Latest Movies';
+    currentHeader(): string {
+        if (this.location.path() === '/latest') {
+            return 'Latest Movies';
         } else if (this.location.path() === '/search') {
-            this.headerReading = 'Search Movie';
+            return 'Search Movie';
         } else if (this.location.path() === '/suggest') {
-            this.headerReading = 'Suggest/Recommend';
+            return 'Suggest/Recommend';
         } else {
-            this.headerReading = '';
+            return '';
         }
+    }
+
+    currentLocation(): string {
+        return this.location.path();
+    }
+
+    dropDown(): void {
+        this.showDropdown = !this.showDropdown;
     }
 
     ngOnInit(): void {
