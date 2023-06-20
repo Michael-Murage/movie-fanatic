@@ -1,0 +1,14 @@
+.cont {
+    width: 70%;
+}
+textarea {
+    resize: none;
+}
+#search-component p {
+    font-family: 'Montserrat', helvetica, arial, sans-serif;
+}
+@media screen and (max-width: 900px) {
+    .cont {
+        width: 90%;
+    }
+}

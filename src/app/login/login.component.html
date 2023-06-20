@@ -14,9 +14,9 @@
                 <div class="my-6">
                     <label for="phoneNumber" style="font-weight: 600;">
                         <span class="text-red-400">*</span>
-                        Phone Number
+                        Email
                     </label>
-                    <div class="flex justify-between my-2">
+                    <!-- <div class="flex justify-between my-2">
                         <input type="number" 
                             class="border rounded-md focus:outline-blue-200 p-1" 
                             style="width: 30%;" 
@@ -27,6 +27,15 @@
                             style="width: 60%;" 
                             placeholder="712345678"
                         >
+                    </div> -->
+                    <div class="my-2">
+                        <p class="text-red-500 text-sm" *ngIf="emailError === 'blank'">Email field cannot be blank</p>
+                        <p class="text-red-500 text-sm" *ngIf="emailError === true && passwordError === true">Invalid email or password</p>
+                        <input 
+                            type="email" name="email" id="email-input" placeholder="Your Email"
+                            class="border rounded-md focus:outline-blue-200 w-full border-gray-300 p-2"
+                            #emailBox (input)="handleInput(emailBox)"
+                        >
                     </div>
                 </div>
 
@@ -36,9 +45,11 @@
                         Password
                     </label>
                     <div class="my-2">
+                        <p class="text-red-500 text-sm" *ngIf="passwordError === 'blank'">Password field cannot be blank</p>
                         <input 
-                            type="password" name="password" id="" placeholder="Your password"
+                            type="password" name="password" id="password-input" placeholder="Your password"
                             class="border rounded-md focus:outline-blue-200 w-full border-gray-300 p-2"
+                            #passwordBox (input)="handleInput(passwordBox)"
                         >
                     </div>
                 </div>
@@ -47,6 +58,7 @@
                     <button 
                         type="submit" 
                         class="bg-blue-700 hover:bg-blue-900 text-gray-100 w-full rounded-md p-3"
+                        (click)="login()"
                     >
                         Sign In
                     </button>

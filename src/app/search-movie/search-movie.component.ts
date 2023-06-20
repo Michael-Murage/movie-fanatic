@@ -15,13 +15,22 @@ export class SearchMovieComponent implements OnInit, OnDestroy {
     searchedMoviesObservable$: Observable<SearchedMoviesInterface> = of(emptySearchedMovie);
     private searchedMoviesSubscription: Subscription = new Subscription();
     private searchTermsString: string = '';
+    isLoading: boolean = false;
 
     constructor(
         private latestMovieService: LatestMovieService
     ) {}
 
     search(term: string): void {
-        if (!term.trim() || term.trim() && term.trim().length < 3) return;
+        if (term.trim()) {
+            this.isLoading = true;
+        }
+        if (!term.trim()) {
+            this.isLoading = false;
+        }
+        if (!term.trim() || term.trim() && term.trim().length < 3){
+            return;
+        }
         else {
             this.searchTermsString = term;
             this.searchedMoviesObservable$ = this.latestMovieService.searchMovies(this.searchTermsString);

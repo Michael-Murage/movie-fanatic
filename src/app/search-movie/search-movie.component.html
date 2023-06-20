@@ -4,8 +4,8 @@
         <input class="rounded-lg mx-auto focus:outline-blue-300" type="text" id="search-box" #searchBox (input)="search(searchBox.value)"/>
     </div>
 
-    <div *ngIf="!searchedMovies || searchedMovies.Search.length === 0" class="" style="height: 80vh; width: 80vw;">
-        <app-loader></app-loader>
+    <div *ngIf="(!searchedMovies || searchedMovies.Search.length === 0) && isLoading" class="" style="height: 80vh; width: 80vw;">
+        <app-skeleton-card-loader></app-skeleton-card-loader>
     </div>
 
     <div class="movie_card" id="bright" *ngFor="let movie of (searchedMovies ? searchedMovies.Search : [])">

@@ -12,6 +12,8 @@ import { SuggestMovieComponent } from './suggest-movie/suggest-movie.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './loader/loader.component';
+import { SwahiliConvertPipe } from './swahili-convert.pipe';
+import { SkeletonCardLoaderComponent } from './skeleton-card-loader/skeleton-card-loader.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LoaderComponent } from './loader/loader.component';
     SearchMovieComponent,
     SuggestMovieComponent,
     MovieCardComponent,
-    LoaderComponent
+    LoaderComponent,
+    SwahiliConvertPipe,
+    SkeletonCardLoaderComponent
   ],
   imports: [
     BrowserModule,

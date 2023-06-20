@@ -9,18 +9,18 @@
             <img src="/assets/downArrow.svg" alt="down arrow icon" class="mx-2 my-auto">
 
             <div *ngIf="showDropdown" class="absolute info-dropdown bg-white border border-gray-300 rounded" (mouseover)="showDropdown = true">
-                <li class="border-b px-3 py-2 hover:bg-blue-300">example@gmail.com</li>
-                <li class="border-t px-3 py-2 hover:bg-blue-300">Logout</li>
+                <li class="border-b px-3 py-2 hover:scale-95">example@gmail.com</li>
+                <li class="border-t px-3 py-2 focus:bg-blue-300 hover:scale-95" (click)="logout()">Logout</li>
             </div>
         </div>
     </div>
 
     <div *ngIf="fullNav" id="side-bar" class="h-full bg-white flex flex-col" (mouseleave)="navFalse()">
-        <div class="">
+        <div class="menu-icon-container">
             <app-logo></app-logo>
             <div class="absolute menu-icon">
-                <div class="flex pl-2">
-                    <img src="/assets/menu.svg" alt="menu icon" class="my-auto" (click)="switchNav()">
+                <div class="flex pl-2" (click)="switchNav()">
+                    <img src="/assets/menu.svg" alt="menu icon" class="my-auto">
                     <h1 class="my-auto px-4 text-xl" [ngClass]="fullNav ? 'hidden' : ''">
                         {{currentHeader()}}
                     </h1>
@@ -28,7 +28,7 @@
             </div>
         </div>
         <hr class="my-3">
-        <div (blur)="navFalse()">
+        <div (mouseover)="navTrue()">
             <a routerLink="/latest">
                 <div class="flex pl-3 py-2 hover:bg-blue-300 rounded-lg" [ngClass]="currentLocation() === '/latest' ? 'bg-blue-300' : ''">
                     <img src="/assets/movie.svg" alt="movie logo">

@@ -1,5 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +11,17 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
     fullNav: boolean = false;
     showDropdown: boolean = false;
+    private emailToken = 'email';
+    private passwordToken = 'pass';
+    private env = environment;
 
     constructor(
-        private location: Location
+        private location: Location,
+        private _router: Router
     ) {}
 
     isNotLogin() :boolean {
-        if (this.location.path() === '/auth/login') {
+        if (this.location.path().includes('/auth/login')) {
             return false;
         } else {
             return true;
@@ -27,11 +33,11 @@ export class NavbarComponent implements OnInit {
     }
 
     navTrue(): void {
-        this.fullNav = true;
+        if (!this.fullNav) this.fullNav = true;
     }
 
     navFalse(): void {
-        this.fullNav = false;
+        if (this.fullNav) this.fullNav = false;
     }
 
     currentHeader(): string {
@@ -40,7 +46,7 @@ export class NavbarComponent implements OnInit {
         } else if (this.location.path() === '/search') {
             return 'Search Movie';
         } else if (this.location.path() === '/suggest') {
-            return 'Suggest/Recommend';
+            return 'Suggest';
         } else {
             return '';
         }
@@ -54,7 +60,17 @@ export class NavbarComponent implements OnInit {
         this.showDropdown = !this.showDropdown;
     }
 
+    logout(): void {
+        localStorage.removeItem(this.emailToken);
+        localStorage.removeItem(this.passwordToken);
+        this._router.navigateByUrl('/auth/login');
+    }
+
     ngOnInit(): void {
-        this.currentHeader();
+        if (localStorage.getItem(this.emailToken) !== this.env.email && localStorage.getItem(this.passwordToken) !== this.env.password) {
+            this._router.navigateByUrl('/auth/login');
+        }else {
+            this.currentHeader();
+        }
     }
 }

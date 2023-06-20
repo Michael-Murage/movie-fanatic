@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, catchError, debounceTime, distinctUntilChanged, of, tap } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { MoviesInterface } from './movies-interface';
 import emptyMovies from './empty-movies';

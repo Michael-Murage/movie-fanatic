@@ -28,6 +28,13 @@ input[type="number"]::inner-spin-button,
 input[type="number"]::outer-spin-button {
   appearance: none;
 }
+#search-component input {
+    padding: .5rem;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    display: block;
+}
 input {
     padding-left: 1em !important;
 }

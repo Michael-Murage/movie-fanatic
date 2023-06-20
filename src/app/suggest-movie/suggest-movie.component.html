@@ -1,1 +1,72 @@
-<p>suggest-movie works!</p>
+<form id="search-component" class="ml-16 mt-16">
+    <div class="mt-6 mb-3 ml-6 cont">
+        <p class="text-lg text-center" style="font-weight: 500;">Suggest a new movie or recommend a part 2 for an already existing one</p>
+    </div>
+
+    <div *ngIf="showSubmittedMessage" class="my-1 ml-6 bg-green-500 rounded-lg w-fit-content px-auto border">
+        <p class="text-sm text-center text-gray-100 mx-auto px-3">Data submitted successfully</p>
+    </div>
+
+    <div class="mb-6 mt-3 ml-6 cont">
+        <label for="phoneNumber">
+            <span class="text-red-400">*</span>
+            Type
+        </label>
+        <div class="my-2">
+            <p class="text-red-500 text-sm" *ngIf="typeError">Type field cannot be blank</p>
+            <!-- <p class="text-red-500 text-sm" >Invalid email or password</p> -->
+            <select 
+                name="type" id="suggestType"
+                class="border rounded-md focus:outline-blue-200 border-gray-300 p-2 w-full"
+                #emailBox (input)="handleInput(emailBox)"
+            >
+                <option>Select--</option>
+                <option value="suggestNew">Suggest New</option>
+                <option value="recommendPart2">Recommend Part 2</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="my-6 ml-6 cont">
+        <label for="phoneNumber">
+            <span class="text-red-400">*</span>
+            Reason
+        </label>
+        <div class="my-2">
+            <p class="text-red-500 text-sm" *ngIf="reasonError">Reason field cannot be blank</p>
+            <!-- <p class="text-red-500 text-sm">Invalid email or password</p> -->
+            <textarea 
+                name="reason" id="suggestionReason" placeholder="Your reason..."
+                class="border rounded-md focus:outline-blue-200 border-gray-300 p-2 w-full"
+                #reason (input)="handleInput(reason)" rows="3"
+            ></textarea>
+        </div>
+    </div>
+
+    <div class="my-6 ml-6 cont">
+        <label for="phoneNumber">
+            <!-- <span class="text-red-400">*</span> -->
+            A billboard for your suggestion
+        </label>
+        <div class="my-2">
+            <!-- <p class="text-red-500 text-sm">Email field cannot be blank</p> -->
+            <!-- <p class="text-red-500 text-sm">Invalid email or password</p> -->
+            <input 
+                type="file" name="recommendedMovieBillboard" id="recommendedMovieBillboard"
+                class="border rounded-md focus:outline-blue-200 border-gray-300 p-2 w-full"
+                #imageUpload (input)="handleInput(imageUpload)"
+            >
+        </div>
+    </div>
+
+    <div class="my-8 cont">
+        <button 
+            type="button" 
+            class="bg-blue-700 hover:bg-blue-900 text-gray-100 rounded-md p-3 w-full px-3"
+            (click)="submitData()"
+        >
+            Submit
+        </button>
+    </div>
+
+</form>
