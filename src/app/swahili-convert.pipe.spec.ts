@@ -6,6 +6,7 @@ describe('SwahiliConvertPipe', () => {
         {input: 'Fast and Furious', result: 'haraka and furious'},
         {input: 'Lord of the rings', result: 'Lord of the rings'},
         {input: 'Lord of the Ring', result: 'lord of the pete'},
+        {input: 'Lord of the Rings: Fellowship of the ring', result: 'lord of the rings: fellowship of the pete'},
         {input: 'Fast and faster', result: 'haraka and faster'},
         {input: 'The family', result: 'the familia'},
         {input: 'The families', result: 'The families'}

@@ -1,4 +1,4 @@
-<div id="search-component" class="ml-16 mt-16">
+<div id="search-component" class="ml-16 mt-16" style="font-family: 'Montserrat', helvetica, arial, sans-serif;;">
     <div>
         <label for="search-box" class="text-center">Search Here</label>
         <input class="rounded-lg mx-auto focus:outline-blue-300" type="text" id="search-box" #searchBox (input)="search(searchBox.value)"/>
@@ -9,15 +9,15 @@
     </div>
 
     <div class="movie_card" id="bright" *ngFor="let movie of (searchedMovies ? searchedMovies.Search : [])">
-      <div class="info_section">
-        <div class="movie_header">
-          <img class="locandina" [src]="(movie.Poster && movie.Poster !== 'N/A' ? movie.Poster : '/assets/sherlock.jpg')"/>
-          <h1>{{movie.Title}}</h1>
+      <div class="info_section relative">
+        <div class="movie_header relative">
+          <img class="locandina relative" [src]="(movie.Poster && movie.Poster !== 'N/A' ? movie.Poster : '/assets/sherlock.jpg')"/>
+          <h1 class="text-black">{{movie.Title | swahiliConvert}}</h1>
           <h4>{{movie.Year}}, {{movie.Type}}</h4>
         </div>
         
       </div>
-      <div class="blur_back" [style.background]="'url(' + (movie.Poster && movie.Poster !== 'N/A' ? movie.Poster : '/assets/sherlock.jpg') + ')'"></div>
+      <div class="blur_back absolute" [style.background]="'url(' + (movie.Poster && movie.Poster !== 'N/A' ? movie.Poster : '/assets/sherlock.jpg') + ')'"></div>
 
     </div>
 

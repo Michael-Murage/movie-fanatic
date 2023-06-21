@@ -6,7 +6,7 @@
   <div class="info_section">
     <div class="movie_header">
       <img class="locandina" [src]="movie.primaryImage ? movie.primaryImage.url : '/assets/sherlock.jpg'"/>
-      <h1>{{movie.originalTitleText.text}}</h1>
+      <h1>{{movie.originalTitleText.text | swahiliConvert}}</h1>
       <h4>{{movie.releaseYear.year}}, {{movie.titleType.text}}</h4>
     </div>
     <div class="movie_desc">
