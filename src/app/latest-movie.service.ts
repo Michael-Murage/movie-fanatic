@@ -12,7 +12,7 @@ import { SearchedMoviesInterface, emptySearchedMovie } from './searched-movies-i
 export class LatestMovieService {
 
     private upcomingMoviesUrl = 'https://moviesdatabase.p.rapidapi.com/titles/x/upcoming';
-    private searchUrl = 'http://www.omdbapi.com';
+    private searchUrl = 'https://www.omdbapi.com';
     private httpOptions: object = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
