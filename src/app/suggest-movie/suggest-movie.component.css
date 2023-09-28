@@ -4,8 +4,12 @@
 textarea {
     resize: none;
 }
-#search-component p {
+#search-component p, .montserat {
     font-family: 'Montserrat', helvetica, arial, sans-serif;
+}
+.rec-card{
+    width: 30vw;
+    height: auto;
 }
 @media screen and (max-width: 900px) {
     .cont {

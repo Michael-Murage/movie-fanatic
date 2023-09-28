@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div class="my-8 cont">
+    <div class="my-8 ml-6 cont">
         <button 
             type="button" 
             class="bg-blue-700 hover:bg-blue-900 text-gray-100 rounded-md p-3 w-full px-3"
@@ -67,6 +67,38 @@
         >
             Submit
         </button>
+    </div>
+
+
+    <div>
+        <div class='text-center mt-16 pt-16 mb-10 text-blue-700'>
+                <h1 class="montserat">Your Recommendations</h1>
+        </div>
+        <div class='flex overflow-x-scroll'>
+
+            <div *ngFor="let item of imagesArray()" class='my-6 mx-6 p-5 rounded shadow-md hover:shadow-fuchsia-300 border flex justify-between'>
+                <div class='relative'>
+                    <div class='rec-card'>
+                            <h1 class='hover:text-blue-500'>
+                                {{parseString(item.type)}}
+                            </h1>
+                    </div>
+                    <div class='hover:text-blue-500 pb-3'>
+                        
+                            {{item.reason}}
+                    
+                    </div>
+                    <p class="text-gray-500 absolute" style="bottom: 0%">
+                        
+                    </p>
+                </div>
+                <div *ngIf="item.recommendedMovieBillboard" style="width: 250px; height: 150px;">
+                    <img style="width: 250px; height: 150px" src="{{item.recommendedMovieBillboard}}" alt="suggested billboard image">
+                    
+                </div>
+            </div>
+
+        </div>
     </div>
 
 </form>

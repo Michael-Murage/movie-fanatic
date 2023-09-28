@@ -21,12 +21,6 @@ export class LatestMovieService {
             'X-RapidAPI-Host': environment.apiHost
         })
     };
-    private searchHttpOptions: object = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            accept: 'application/json'
-        })
-    };
 
     private empty: MoviesInterface = emptyMovies;
     private emptySearched: SearchedMoviesInterface = emptySearchedMovie;

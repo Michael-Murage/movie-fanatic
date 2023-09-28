@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 interface Suggestion {
     type: string,
     reason: string,
     recommendedMovieBillboard: string | unknown
 };
+interface SuggestionData {
+    type: string,
+    reason: string,
+    recommendedMovieBillboard: string
+}
 @Component({
   selector: 'app-suggest-movie',
   templateUrl: './suggest-movie.component.html',
@@ -16,9 +23,14 @@ export class SuggestMovieComponent {
         reason: '',
         recommendedMovieBillboard: ''
     };
+    private env = environment;
     typeError: boolean = false;
     reasonError: boolean = false;
     showSubmittedMessage: boolean = false;
+
+    constructor(
+        private sanitizer: DomSanitizer
+    ) {}
 
     handleInput(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): void {
         if (this.typeError || this.reasonError) {
@@ -75,5 +87,29 @@ export class SuggestMovieComponent {
         setTimeout(() => {
             this.showSubmittedMessage = false;
         }, 3000);
+    }
+
+    imagesArray(): SuggestionData[] {
+        const localStorageData: string[] = Object.values(localStorage);
+        if (localStorageData.length <= 2) return [];
+
+        const suggestionData: SuggestionData[] = localStorageData
+            .filter(item => item !== this.env.email && item !== this.env.password)
+            .map(item => JSON.parse(item));
+
+        return suggestionData;
+    }
+
+    parseString(term: string): string {
+        if(term === 'recommendPart2') return 'Part 2 recommendation';
+        else if (term === 'suggestNew') return 'New Suggestion';
+        else return term;
+    }
+
+    convertStrToImage(str: string): SafeUrl {
+        const blob = new Blob([str], { type: 'image/png' });
+        const url = URL.createObjectURL(blob);
+        console.log(str)
+        return this.sanitizer.bypassSecurityTrustResourceUrl(url);
     }
 }
